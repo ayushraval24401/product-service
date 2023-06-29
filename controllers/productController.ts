@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction, response } from "express";
 import productRepository from "../repositories/productRepository";
 import { receiveMessage, sendMessage } from "../queues/productQueue";
+import ExtendedRequest from "../interfaces/extendedRequest";
 
 class ProductController {
   async getAllProducts(req: Request, res: Response, next: NextFunction) {
@@ -28,7 +29,7 @@ class ProductController {
     }
   }
 
-  async buyProducts(req: any, res: Response, next: NextFunction) {
+  async buyProducts(req: ExtendedRequest, res: Response, next: NextFunction) {
     try {
       const { ids } = req.body;
 

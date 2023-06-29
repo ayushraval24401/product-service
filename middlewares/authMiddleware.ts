@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import amqp, { Channel } from "amqplib";
+import ExtendedRequest from "../interfaces/extendedRequest";
 
-const isAuth = async (req: any, res: Response, next: NextFunction) => {
+const isAuth = async (req: ExtendedRequest, res: Response, next: NextFunction) => {
   const amqpServer = "amqp://localhost:5672";
   const connection = await amqp.connect(amqpServer);
   const authChannel = await connection.createChannel();
